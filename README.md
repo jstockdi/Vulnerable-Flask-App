@@ -38,13 +38,11 @@ It contains the following vulnerabilities.
 
 git clone https://github.com/anil-yelken/Vulnerable-Flask-App
 
-cd Vulnerable-Flask-App
-
-sudo pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 
 ## Usage
 
-python3 vulnerable-flask-app.py
+python3 app.py
 
 <img src="https://github.com/anil-yelken/Vulnerable-Flask-App/blob/main/vulnerable-flask-app.jpg">
 

@@ -223,6 +223,42 @@ def uploadfile():
       '''
 
 
+import csv,os
+
+def read_cows():
+    cows = []
+
+    module_path = os.path.dirname(__file__)
+    file_path = os.path.join(module_path, 'cows.csv')
+    print(file_path)
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            cows.append(row)
+    return cows
+
+
+
+
+@app.route('/cows', methods = ['GET'])
+def cows():
+    
+    ## Read list of cows from csv file, "cows.csv" with format "id,cow_name,cow_sound"
+    cows = read_cows()
+    
+    ## Convert list of cows to json use header names as key values
+    cow_json = []
+    for cow in cows:
+        cow_json.append({
+            "id": cow[0],
+            "cow_name": cow[1],
+            "cow_sound": cow[2]
+        })
+
+    ## return cow_json with content-type: application/json    
+    return jsonify(cow_json), 200
+
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=8081)
